@@ -18,31 +18,104 @@
 
           <style>
 
-            *{
-              margin: auto;
-              width: 300px;
-            }
-            .img{
+            .mybtn{
+             margin: auto;
+             width: 400px;
 
-              margin: auto;
-             
-            }
+           }
 
+           .form-group{
+            margin: auto;
+            width: 400px;
+          }
 
-        </head>       
-        <body>
-          <div class="img">
-           <img src="https://images-na.ssl-images-amazon.com/images/I/91IAOhqKLXL._AC_SY450_.jpg"  width="200" height="250" >
-         </div>
+          .img{
 
-
-
-         <div>
+            margin: auto;
+            width: 350px;
+          }
+        </style>
 
 
-          <h1 class="mytitle">양초를 팝니다.<font size="-1">가격: 3000원(개당)</font> </h1>
+      </head>       
+      <body>
 
-        </div>
+        <div class="img">
+         <img src="https://images-na.ssl-images-amazon.com/images/I/91IAOhqKLXL._AC_SY450_.jpg"  width="200" height="250" >
+       </div>
 
-      </body>
-      </html>
+
+
+       <div class="form-group">
+
+        <h1 class="mytitle">양초를 팝니다<font size="-1">가격: 3000원(개당)</font> </h1>
+        <h5>이 양초는 너무 특별해요</h5>
+
+
+
+
+
+
+
+        <div>
+
+
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">주문자이름</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          </div>
+
+
+
+
+
+
+
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">수량</span>
+
+              <div class="input-group">
+                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">1</a>
+                    <a class="dropdown-item" href="#">2</a>
+                    <a class="dropdown-item" href="#">3</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">4</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">주소</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">전화번호</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          </div>
+
+
+          <p>
+            <button class="mybtn"> 주문하기</button>
+          </p>
+        </div> 
+      </div>
+    </body>
+    </html>
+
+      <!-- div구상 골격 크게 세개로 만들자 -->
