@@ -19,17 +19,24 @@
 
           <style>
 
+            .mytitle{
+              text-align: center;
+            }
+
             *{
-            font-family: 'Nanum Pen Script', cursive;
-            font-family: 'Cute Font', cursive;
+              font-family: 'Nanum Pen Script', cursive;
+              font-family: 'Cute Font', cursive;
 
             }
             .mybtn{
-             margin: auto;
-             width: 400px;
-             background-color: blue;
+             display: block;
+             margin: auto auto;
+             height 25px;
+             width: 100px;
+             background-color: #219def;
              color: white;
-             border-radius: 10px;
+             border-radius: 5px;
+
 
            }
 
@@ -39,9 +46,12 @@
           }
 
           .img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 210px;
+            border-radius: 15px;
 
-            margin: auto;
-            width: 350px;
           }
         </style>
 
@@ -58,13 +68,7 @@
        <div class="form-group">
 
         <h1 class="mytitle">양초를 팝니다<font size="-1">가격: 3000원(개당)</font> </h1>
-        <h5>이 양초는 너무 특별해요</h5>
-
-
-
-
-
-
+        <h5 class="mytitle">🎄한정판 크리스마스 양초를 초특가에 판매합니다🎄</h5>
 
         <div>
 
@@ -77,32 +81,23 @@
             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
           </div>
 
-
-
-
-
-
-
-
           <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">수량</span>
-
-              <div class="input-group">
-                <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">1</a>
-                    <a class="dropdown-item" href="#">2</a>
-                    <a class="dropdown-item" href="#">3</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">4</a>
-                  </div>
-                </div>
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary dropdown-toggle input-group-text" id="inputGroup-sizing-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">수량</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">1</a>
+                <a class="dropdown-item" href="#">2</a>
+                <a class="dropdown-item" href="#">3</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">대량주문은 여기에</a>
               </div>
             </div>
           </div>
+          </div>
+
+
 
           <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
