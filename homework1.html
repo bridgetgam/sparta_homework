@@ -54,7 +54,18 @@
 
           }
         </style>
+      <script>
+        
 
+        function order() {
+            if ( $('#orderer').val()==''||$('#order_amount').val()==''||$('#order_address').val()==''||$('#order_phonenumber').val()=='') {
+              alert("정확히 입력해주세요.")
+            }
+
+
+        }
+
+      </script>
 
       </head>       
       <body>
@@ -78,7 +89,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">주문자이름</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="orderer">
           </div>
 
           <div class="input-group input-group-sm mb-3">
@@ -86,8 +97,8 @@
             <input type="text" class="form-control" aria-label="Text input with dropdown button">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary dropdown-toggle input-group-text" id="inputGroup-sizing-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">수량</button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">1</a>
+              <div class="dropdown-menu" id="order_amount">
+                <a class="dropdown-item" href="#" value="1" >1</a>
                 <a class="dropdown-item" href="#">2</a>
                 <a class="dropdown-item" href="#">3</a>
                 <div role="separator" class="dropdown-divider"></div>
@@ -103,19 +114,19 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">주소</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="order_address">
           </div>
 
           <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">전화번호</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="order_phonenumber">
           </div>
 
 
           <p>
-            <button class="mybtn"> 주문하기</button>
+            <button class="mybtn" onclick="order()"> 주문하기</button>
           </p>
         </div> 
       </div>
