@@ -28,11 +28,25 @@
               font-family: 'Cute Font', cursive;
 
             }
-            .mybtn{
+
+        
+           .mybtn{
              display: block;
              margin: auto auto;
-             height 25px;
+             height : 25px;
              width: 100px;
+             background-color: #219def;
+             color: white;
+             border-radius: 5px;
+
+
+           }
+
+            .listbtn{
+             display: block;
+             margin: auto auto;
+             height : 35px;
+             width: 200px;
              background-color: #219def;
              color: white;
              border-radius: 5px;
@@ -54,83 +68,164 @@
 
           }
         </style>
-      <script>
-        
-
-        function order() {
-            if ( $('#orderer').val()==''||$('#order_amount').val()==''||$('#order_address').val()==''||$('#order_phonenumber').val()=='') {
-              alert("정확히 입력해주세요.")
-            }
-
-
+        <script>
+         function blinker() {
+          $('#blinking').fadeOut(300);
+          $('#blinking').fadeIn(300);
         }
 
-      </script>
+        setInterval(blinker, 800);
 
-      </head>       
-      <body>
-
-        <div class="img">
-         <img src="https://images-na.ssl-images-amazon.com/images/I/91IAOhqKLXL._AC_SY450_.jpg"  width="200" height="250" >
-       </div>
+        let num = 0;
 
 
+        function order() {
 
-       <div class="form-group">
+          let orderer = $('#orderer').val();
+          let order_amount = $('#order_amount').val()
+          let order_address= $('#order_address').val()
+          let order_phonenumber= $('#order_phonenumber').val()
+          let order_amount_selected = $('#order_amount option:selected').text();
+          var regExp = /^(01[016789]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+          let customer =  
+          '<tr>\
+          <td scope="row">' + (num+1) + '</td>\
+          <td>' + orderer + '</td>\
+          <td>' + order_amount_selected + '</td>\
+          <td>' + order_address + '</td>\
+          <td>' + order_phonenumber + '</td>\
+          </tr>';
 
-        <h1 class="mytitle">양초를 팝니다<font size="-1">가격: 3000원(개당)</font> </h1>
-        <h5 class="mytitle">🎄한정판 크리스마스 양초를 초특가에 판매합니다🎄</h5>
+          if ( orderer==''|| order_amount=='수량을 선택하세요'||order_address==''|| order_phonenumber=='') {
+            alert("정확히 입력해주세요.");
+          }
 
-        <div>
-
-
-
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">주문자이름</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="orderer">
-          </div>
-
-          <div class="input-group input-group-sm mb-3">
-          <div class="input-group">
-            <input type="text" class="form-control" aria-label="Text input with dropdown button">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary dropdown-toggle input-group-text" id="inputGroup-sizing-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">수량</button>
-              <div class="dropdown-menu" id="order_amount">
-                <a class="dropdown-item" href="#" value="1" >1</a>
-                <a class="dropdown-item" href="#">2</a>
-                <a class="dropdown-item" href="#">3</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">대량주문은 여기에</a>
-              </div>
-            </div>
-          </div>
-          </div>
+          else if (regExp.test(order_phonenumber) == false){
+            alert('전화번호 서식을 확인하세요!\n01X-XXXX-XXXX');
+            $('#order_phonenumber').focus()
 
 
+          } else {
+           var result = confirm('이름 ------ ' +orderer+ '\n수량 ------ ' +order_amount_selected+ '\n주소 ------ ' +order_address+ '\n전화번호 - ' +order_phonenumber+ '\n\n이대로 주문하시겠습니까?');
 
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">주소</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="order_address">
-          </div>
+         }if (result){
+          num++;
+          alert( '축하드립니다! '+orderer+ '님은' +num+ "번째로 주문 성공하셨습니다!");
+          $('#info-table').show()
+          $('#order-list').append(customer)
+        } else {
+          alert("양식대로 다시 주문해주세요!")
+          return;
+        }
 
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">전화번호</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="order_phonenumber">
-          </div>
+      }
+
+      function openclose()
+      {
+        let open = $('#info-table').css('display');
+        if(open=='none'){
+          $('#info-table').show();
+          $('#order-list').show();
+          $('#btn-posting-box').text('주문리스트 닫기');
+        }else{
+         $('#info-table').hide();
+         $('#order-list').hide();
+         $('#btn-posting-box').text('주문리스트 열기');
+       }
+     }
 
 
-          <p>
-            <button class="mybtn" onclick="order()"> 주문하기</button>
-          </p>
-        </div> 
+</script>
+
+</head>       
+<body>
+
+  <div class="img">
+   <img src="https://images-na.ssl-images-amazon.com/images/I/91IAOhqKLXL._AC_SY450_.jpg"  width="200" height="250" >
+ </div>
+
+
+
+ <div class="form-group">
+
+  <h1 class="mytitle">양초를 팝니다<font size="-1">가격: 3000원(개당)</font> </h1>
+  <h5 class="mytitle">
+    한정판 크리스마스 양초를 초특가에 판매합니다
+    <span id = "blinking">🎄</span></h5>
+
+    <div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">주문자이름</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="orderer">
       </div>
-    </body>
-    </html>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group">
+          <select class="custom-select" id="order_amount">
+            <option selected>수량을 선택하세요</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="1000">대량주문신청</option>
+          </select>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">주소</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="order_address">
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">전화번호</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="order_phonenumber">
+      </div>
+
+
+      <p>
+        <button class="mybtn" onclick="order()"> 주문하기</button>
+      </p>
+
+      <p class="lead">
+        <button id="btn-posting-box" onclick="openclose()" class="listbtn" href="#" >주문 리스트 보기</button>
+      </p>
+
+    </div> 
+ 
+
+
+
+
+  <table id="info-table" class="table" style="display:none;">
+    <thead>
+      <tr>
+        <th scope="col">🎄</th>
+        <th scope="col">이름</th>
+        <th scope="col">수량</th>
+        <th scope="col">주소</th>
+        <th scope="col">전화번호</th>
+      </tr>
+    </thead>
+    <tbody id="order-list" class="order_list">
+
+    </tbody>
+  </table>
+ </div>
+
+</body>
+</html>
 
       <!-- div구상 골격 크게 세개로 만들자 -->
