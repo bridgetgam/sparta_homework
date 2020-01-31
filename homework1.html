@@ -29,8 +29,8 @@
 
             }
 
-        
-           .mybtn{
+
+            .mybtn{
              display: block;
              margin: auto auto;
              height : 25px;
@@ -42,7 +42,7 @@
 
            }
 
-            .listbtn{
+           .listbtn{
              display: block;
              margin: auto auto;
              height : 35px;
@@ -69,17 +69,64 @@
           }
         </style>
         <script>
-         function blinker() {
-          $('#blinking').fadeOut(300);
-          $('#blinking').fadeIn(300);
-        }
 
-        setInterval(blinker, 800);
-
-        let num = 0;
+          $(document).ready(function() {
+            reacting()
+          });
 
 
-        function order() {
+          function blinker() {
+            $('#blinking').fadeOut(300);
+            $('#blinking').fadeIn(300);
+          }
+
+          setInterval(blinker, 800);
+
+          function reacting(){
+
+           $.ajax({
+            type: "GET",
+              url: "http://spartacodingclub.shop/order", //api 에서 정보 받아오기
+              data: {},
+              success: function(response){
+                let orders = response['orders'];
+                $('#order-list').html('')
+
+                let temp_html ='';
+                let count = 1;
+
+                for (let i = 0 ; i < orders.length; i++) {
+                  console.log(orders[i]['address'],orders[i]['name'],orders[i]['count'],orders[i]['phone'])
+
+                  temp_html = '<tr><td>'+(count++)+'</td>\
+                  <td>'+orders[i]['name'] +'</td>\
+                  <td>'+orders[i]['count']+'</td>\
+                  <td>'+orders[i]['address']+'</td>\
+                  <td>'+orders[i]['phone']+'</td>\
+                  </tr>'
+                  
+                  $('#order-list').append(temp_html)
+                  
+                  
+                }
+
+
+              }
+            })
+
+
+
+
+         }
+
+
+
+
+         let num = 0;
+
+
+         function order() {
+
 
           let orderer = $('#orderer').val();
           let order_amount = $('#order_amount').val()
@@ -87,6 +134,8 @@
           let order_phonenumber= $('#order_phonenumber').val()
           let order_amount_selected = $('#order_amount option:selected').text();
           var regExp = /^(01[016789]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+
+
           let customer =  
           '<tr>\
           <td scope="row">' + (num+1) + '</td>\
@@ -98,6 +147,7 @@
 
           if ( orderer==''|| order_amount=='수량을 선택하세요'||order_address==''|| order_phonenumber=='') {
             alert("정확히 입력해주세요.");
+            return;
           }
 
           else if (regExp.test(order_phonenumber) == false){
@@ -118,10 +168,13 @@
           return;
         }
 
+
+
+
+
       }
 
-      function openclose()
-      {
+      function openclose(){
         let open = $('#info-table').css('display');
         if(open=='none'){
           $('#info-table').show();
@@ -135,10 +188,14 @@
      }
 
 
-</script>
 
-</head>       
-<body>
+
+
+
+   </script>
+
+ </head>       
+ <body>
 
   <div class="img">
    <img src="https://images-na.ssl-images-amazon.com/images/I/91IAOhqKLXL._AC_SY450_.jpg"  width="200" height="250" >
@@ -170,7 +227,7 @@
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
+            <option a href="http://domeggook.com/main/item/itemList.php?ca=04_02_09_07_00">6</option>
             <option value="1000">대량주문신청</option>
           </select>
 
@@ -204,26 +261,21 @@
       </p>
 
     </div> 
- 
+    <table id="info-table" class="table" style="display:none;">
+      <thead>
+        <tr>
+          <th scope="col">🎄</th>
+          <th scope="col">이름</th>
+          <th scope="col">수량</th>
+          <th scope="col">주소</th>
+          <th scope="col">전화번호</th>
+        </tr>
+      </thead>
+      <tbody id="order-list" class="order_list">
 
-
-
-
-  <table id="info-table" class="table" style="display:none;">
-    <thead>
-      <tr>
-        <th scope="col">🎄</th>
-        <th scope="col">이름</th>
-        <th scope="col">수량</th>
-        <th scope="col">주소</th>
-        <th scope="col">전화번호</th>
-      </tr>
-    </thead>
-    <tbody id="order-list" class="order_list">
-
-    </tbody>
-  </table>
- </div>
+      </tbody>
+    </table>
+  </div>
 
 </body>
 </html>
